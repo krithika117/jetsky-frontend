@@ -11,6 +11,7 @@ $(document).ready(function () {
         var toa = document.getElementById("toa").value;
         var cost = document.getElementById("cost").value;
         var seats = document.getElementById("seats").value;
+        var flightdate = $('#flightdate').val();
 
 
         if (flightname == "" || departure == "" || arrival == "" || tod == "" || toa == "" || cost == "" || seats == "") {
@@ -29,7 +30,8 @@ $(document).ready(function () {
                     tod: tod,
                     toa: toa,
                     cost: cost,
-                    seats: seats
+                    seats: seats,
+                    flightdate: flightdate
 
                 }),
 
@@ -55,28 +57,37 @@ $(document).ready(function () {
             console.log(data);
             $('tbody').empty();
             for (var i = 0; i < data.response.length; i++) {
+                var s = new Date(data.response[i].flightdate).toLocaleString(undefined, {
+                    timeZone: 'Asia/Kolkata'
+                });
+                s = s.split(',')[0]
+                var datearray = s.split("/");
+                s = datearray[1] + '/' + datearray[0] + '/' + datearray[2];
                 var row = ''
                 row = $('<tr><td>' +
                     data.response[i].flightid +
                     '</td><td>' +
                     data.response[i].flightname +
                     '</td><td>' +
-                    data.response[i].departureTime + '<br>' 
-                    + data.response[i].departure +
+                    s +
+                    '</td><td>' +
+                    data.response[i].departureTime + '<br>' +
+                    data.response[i].departure +
 
                     '</td><td>' +
                     '<img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/22/000000/external-flight-interface-kiranshastry-lineal-color-kiranshastry.png"/>' +
                     '</td><td>' +
                     data.response[i].arrivalTime + '<br>' +
                     data.response[i].arrival +
-
-
                     '</td><td>' +
-                    data.response[i].cost +'/-'+
+                    data.response[i].cost + '/-' +
                     '</td><td>' +
-                    data.response[i].seats +' seats'+
+                    data.response[i].seats + ' seats' +
+                    '</td><td>' +
+
+                    '<button type="button" class="delete" class="btn"  id="' + data.response[i].flightid + '">Delete</button></td>' +
                     '</td></tr>');
-                    
+
                 $('tbody').append(row);
                 console.log('done')
             }
@@ -90,10 +101,11 @@ $(document).ready(function () {
     //Delete API Call
     $(document).on("click", '.delete', function (e) {
         e.preventDefault();
-        var flightid = document.getElementById("flightid").value;
+        // var flightid = document.getElementById("flightid").value;
+        var flightid = $(this).attr("id");
         $.ajax({
             method: "POST",
-            url: server + "/flights/delete",
+            url: server + "flights/delete",
             contentType: 'application/json;charset=UTF-8',
             data: JSON.stringify({
                 'flightid': flightid,
