@@ -25,23 +25,24 @@ body {
     transform: translate(-50%, -60%);
 }
 
-h1{
-    font-size:3rem;
+h1 {
+    font-size: 3rem;
     padding: 0;
     color: #154E5E;
 }
 
-button{
-    width:100%;
-    background-color: #154E5E;
+button {
+
+    background-color: #154E5E !important;
     padding: 10px 20px;
-    color: #fff;
+    color: #fff !important;
     border-radius: 50px;
     border: none;
     cursor: pointer;
 }
 
-button:hover{
+button:hover {
     background-color: #1b6c82;
     transition: ease-in-out 0.25s;
 }
+

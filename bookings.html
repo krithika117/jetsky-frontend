@@ -6,15 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JetSky | Home</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/bookings.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+    <h1>Flights Data</h1>
+    <div id="add_data_Modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Flight</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div id="insert_form">
+                        <input type="text" placeholder="Flight Name" id="flightname" required="" />
+                        <input type="text" placeholder="departure" id="departure" required="" />
+                        <input type="text" placeholder="arrival" id="arrival" required="" />
+                        <input type="text" placeholder="ToD" id="tod" required="" />
+                        <input type="text" placeholder="RoA" id="toa" required="" />
+                        <input type="number" placeholder="cost" id="cost" required="" />
+                        <input type="number" placeholder="seats" id="seats" required="" />
 
+                        <div style="overflow:auto;">
+                            <input type="button" id="addflight" class="btn-primary" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <button type="button" data-toggle="modal" data-target="#add_data_Modal" class="btn">
+        Add
+        Flights</button><br />
     <table>
         <thead>
-            <tr>
+            <!-- <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Departure</th>
@@ -23,16 +55,17 @@
                 <th>arr time</th>
                 <th>cost</th>
                 <th>seats</th>
-                
-            </tr>
+
+            </tr> -->
         </thead>
         <tbody></tbody>
-        </table>
-        <input type="number" id="flightid"/>
-        <button class="delete">Delete</button>
+    </table>
+    <input type="number" id="flightid" placeholder="Enter Flight ID to be deleted" />
+    <button type="button" class="delete" class="btn">Delete</button>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+
 
 <script src="scripts/bookings.js"></script>
+
 </html>
 </table>
