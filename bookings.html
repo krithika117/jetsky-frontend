@@ -5,37 +5,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JetSky | Home</title>
+    <title>SkyJet | Dashboard</title>
     <link rel="stylesheet" href="styles/bookings.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.svg">
+
 </head>
 
 <body>
-    <h1>Flight Data</h1>
+
+    <h2>SkyJet Dashboard </h2>
+    <br>
     <div id="add_data_Modal" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Flight</h4>
-                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h2 class="modal-title">Add Flight</h2>
+                    <button type="button" data-dismiss="modal" class="modal-title" style="float:right">x</button>
                 </div>
                 <div class="modal-body">
                     <div id="insert_form">
-                        <input type="text" placeholder="Flight ID" id="flightid" required="" />
+                        <input type="text" placeholder="Flight ID (Unique 6 digit ID)" id="flightid" required="" />
                         <input type="text" placeholder="Flight Name" id="flightname" required="" />
-                        <input type="text" placeholder="departure" id="departure" required="" />
-                        <input type="text" placeholder="arrival" id="arrival" required="" />
-                        <input type="text" placeholder="ToD" id="tod" required="" />
-                        <input type="text" placeholder="RoA" id="toa" required="" />
-                        <input type="number" placeholder="cost" id="cost" required="" />
-                        <input type="number" placeholder="seats" id="seats" required="" />
+                        <input type="text" placeholder="Departure" id="departure" required="" />
+                        <input type="text" placeholder="Arrival" id="arrival" required="" />
+                        <input type="text" placeholder="Departure Time" id="tod" required="" />
+                        <input type="text" placeholder="Arrival Time" id="toa" required="" />
+                        <input type="number" placeholder="Price" id="cost" required="" />
+                        <input type="number" placeholder="Maximum Seats" id="seats" required="" />
                         <input type="date" placeholder="date" id="flightdate" required="" />
 
                         <div style="overflow:auto;">
-                            <input type="button" id="addflight" class="btn-primary" value="Submit">
+                            <input type="button" id="addflight" value="Submit">
                         </div>
                     </div>
                 </div>
@@ -46,24 +53,24 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Flight</h4>
-                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h2 class="modal-title">Edit Flight</h2>
+                    <button type="button" data-dismiss="modal" class="modal-title" style="float:right">x</button>
                 </div>
                 <div class="modal-body">
                     <div id="insert_form">
-                        <input type="text" placeholder="Flight ID" id="eflightid" required="" hidden/>
+                        <input type="text" placeholder="Flight ID" id="eflightid" required="" hidden />
                         <input type="text" placeholder="Flight Name" id="eflightname" required="" />
-                        <input type="text" placeholder="departure" id="edeparture" required="" />
-                        <input type="text" placeholder="arrival" id="earrival" required="" />
-                        <input type="text" placeholder="ToD" id="etod" required="" />
-                        <input type="text" placeholder="RoA" id="etoa" required="" />
-                        <input type="number" placeholder="cost" id="ecost" required="" />
-                        <input type="number" placeholder="seats" id="eseats" required="" />
+                        <input type="text" placeholder="Departure" id="edeparture" required="" />
+                        <input type="text" placeholder="Arrival" id="earrival" required="" />
+                        <input type="text" placeholder="Departure Time" id="etod" required="" />
+                        <input type="text" placeholder="Arrival Time" id="etoa" required="" />
+                        <input type="number" placeholder="Price" id="ecost" required="" />
+                        <input type="number" placeholder="Seats" id="eseats" required="" />
                         <input type="date" placeholder="date" id="eflightdate" required="" />
 
-                        <div style="overflow:auto;">
-                            <input type="button" id="editflight" class="btn-primary" value="Submit">
-                        </div>
+                        <!-- <div style="overflow:auto;"> -->
+                        <input type="button" id="editflight" value="Submit">
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
@@ -76,9 +83,11 @@
         </thead>
         <tbody></tbody>
     </table><br />
-    <button type="button" data-toggle="modal" data-target="#add_data_Modal" class="btn">
+    <button type="button" data-toggle="modal" data-target="#add_data_Modal">
         Add
-        Flights</button><br />
+        Flight
+    </button>
+    <button onclick="window.location='index.html'" style="float:right">←</button><br />
 </body>
 
 <script src="scripts/bookings.js"></script>

@@ -88,22 +88,22 @@ $(document).ready(function () {
                     '</td><td>' +
                     s +
                     '</td><td>' +
-                    data.response[i].departureTime + '<br>' +
+                    '<div class="time">' + data.response[i].departureTime + '</div>' +
                     data.response[i].departure +
 
                     '</td><td>' +
-                    '✈️' +
+                    '<i class="fa-solid fa-plane"></i>' +
                     '</td><td>' +
-                    data.response[i].arrivalTime + '<br>' +
+                    '<div class="time">' + data.response[i].arrivalTime + '</div>' +
                     data.response[i].arrival +
                     '</td><td>' +
-                    data.response[i].cost + '/-' +
+                    '₹' + data.response[i].cost +
                     '</td><td>' +
                     data.response[i].seats + ' seats' +
                     '</td><td>' +
 
-                    '<a class="delete" id="' + data.response[i].num + '">🗑️</a>&nbsp;' +
-                    '<a class="editselect" data-toggle="modal" data-target="#edit_data_Modal" id="' + data.response[i].flightid + '">✏️</a></td>' +
+                    '<a class="delete" id="' + data.response[i].num + '"><i class="fa-solid fa-trash-can"></i></a>&nbsp;' +
+                    '<a class="editselect" data-toggle="modal" data-target="#edit_data_Modal" id="' + data.response[i].flightid + '"><i class="fa-solid fa-pen-to-square"></i></a></td>' +
                     '</td></tr>');
 
                 $('tbody').append(row);
