@@ -52,9 +52,9 @@ $(document).ready(function () {
                 }),
 
                 success: function (response) {
-                    console.log(response)
+                    //console.log(response)
                     location.replace('bookings.html')
-                    console.log('inserted')
+                    //console.log('inserted')
                 },
 
                 error: function (err) {
@@ -71,7 +71,7 @@ $(document).ready(function () {
         url: server + "flights",
         dataType: 'json',
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             $('tbody').empty();
             for (var i = 0; i < data.response.length; i++) {
                 var s = new Date(data.response[i].flightdate).toLocaleString(undefined, {
@@ -107,7 +107,7 @@ $(document).ready(function () {
                     '</td></tr>');
 
                 $('tbody').append(row);
-                console.log('done')
+                //console.log('done')
             }
 
         },
@@ -142,7 +142,7 @@ $(document).ready(function () {
 
             },
             error: function (err) {
-                console.log(err);
+                //console.log(err);
             }
         })
     });
@@ -184,10 +184,10 @@ $(document).ready(function () {
 
                 success: function (response) {
                     location.replace('bookings.html')
-                    console.log('inserted')
+                    //console.log('inserted')
                 },
                 error: function (err) {
-                    console.log(err);
+                    //console.log(err);
                 }
             });
         }
@@ -211,10 +211,10 @@ $(document).ready(function () {
             success: function (data) {
                 //Add Toastify
                 location.replace('bookings.html')
-                console.log('deleted')
+                //console.log('deleted')
             },
             error: function (err) {
-                console.log(err);
+                //console.log(err);
             }
         })
     });
