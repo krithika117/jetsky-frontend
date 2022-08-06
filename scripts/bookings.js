@@ -1,52 +1,21 @@
 var server = "http://127.0.0.1:5000/";
+
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
 
-    if (month.length < 2) 
+    if (month.length < 2)
         month = '0' + month;
-    if (day.length < 2) 
+    if (day.length < 2)
         day = '0' + day;
 
     return [year, month, day].join('-');
 }
+
+// CRUD APIs begin.
 $(document).ready(function () {
-    //select individual API Call
-
-    $(document).on("click", '.editselect', function (e) {
-        e.preventDefault();
-        var flightid = $(this).attr("id");
-        $.ajax({
-            method: "POST",
-            url: server + "/flights/indiv",
-            contentType: 'application/json;charset=UTF-8',
-            data: JSON.stringify({
-                'flightid': flightid,
-            }),
-            dataType: 'json',
-            success: function (data) {
-
-                document.getElementById("eflightname").value = data.response[0].flightname;
-                document.getElementById("edeparture").value = data.response[0].departure;
-                document.getElementById("earrival").value = data.response[0].arrival;
-                document.getElementById("etod").value = data.response[0].departureTime;
-                document.getElementById("etoa").value = data.response[0].arrivalTime;
-                document.getElementById("ecost").value = data.response[0].cost;
-                document.getElementById("eseats").value = data.response[0].seats;
-                // document.getElementById("edate").value = s;
-                
-                $('#eflightdate').val(formatDate(new Date(data.response[0].flightdate)));
-               
-
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        })
-    });
-
     //Create API Call
     $('#addflight').on('click', function (e) {
         e.preventDefault();
@@ -83,17 +52,18 @@ $(document).ready(function () {
                 }),
 
                 success: function (response) {
+                    console.log(response)
                     location.replace('bookings.html')
                     console.log('inserted')
                 },
+
                 error: function (err) {
-                    console.log(err);
+                    alert("ID is duplicate.")
                 }
             });
         }
 
     });
-
 
     //Retrieve API Call
     $.ajax({
@@ -122,7 +92,6 @@ $(document).ready(function () {
                     data.response[i].departure +
 
                     '</td><td>' +
-                    // '<img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/20/000000/external-flight-interface-kiranshastry-lineal-color-kiranshastry.png"/>' +
                     '✈️' +
                     '</td><td>' +
                     data.response[i].arrivalTime + '<br>' +
@@ -146,6 +115,86 @@ $(document).ready(function () {
             alert('Error: ' + textStatus + ' - ' + errorThrown);
         }
     });
+
+    //select individual API Call
+
+    $(document).on("click", '.editselect', function (e) {
+        e.preventDefault();
+        var flightid = $(this).attr("id");
+        $.ajax({
+            method: "POST",
+            url: server + "/flights/indiv",
+            contentType: 'application/json;charset=UTF-8',
+            data: JSON.stringify({
+                'flightid': flightid,
+            }),
+            dataType: 'json',
+            success: function (data) {
+                document.getElementById("eflightid").value = data.response[0].flightid;
+                document.getElementById("eflightname").value = data.response[0].flightname;
+                document.getElementById("edeparture").value = data.response[0].departure;
+                document.getElementById("earrival").value = data.response[0].arrival;
+                document.getElementById("etod").value = data.response[0].departureTime;
+                document.getElementById("etoa").value = data.response[0].arrivalTime;
+                document.getElementById("ecost").value = data.response[0].cost;
+                document.getElementById("eseats").value = data.response[0].seats;
+                $('#eflightdate').val(formatDate(new Date(data.response[0].flightdate)));
+
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    });
+
+    //Update API Call
+    $('#editflight').on('click', function (e) {
+        e.preventDefault();
+        var flightid = document.getElementById("eflightid").value;
+        var flightname = document.getElementById("eflightname").value;
+        var departure = document.getElementById("edeparture").value;
+        var arrival = document.getElementById("earrival").value;
+        var tod = document.getElementById("etod").value;
+        var toa = document.getElementById("etoa").value;
+        var cost = document.getElementById("ecost").value;
+        var seats = document.getElementById("eseats").value;
+        var flightdate = $('#eflightdate').val();
+
+
+        if (flightdate == "" || flightid == "" || flightname == "" || departure == "" || arrival == "" || tod == "" || toa == "" || cost == "" || seats == "") {
+            alert("Please fill all details.");
+
+        } else {
+            $.ajax({
+                method: "POST",
+                url: server + 'flights/edit',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({
+                    flightid: flightid,
+                    flightname: flightname,
+                    departure: departure,
+                    arrival: arrival,
+                    tod: tod,
+                    toa: toa,
+                    cost: cost,
+                    seats: seats,
+                    flightdate: flightdate
+
+                }),
+
+                success: function (response) {
+                    location.replace('bookings.html')
+                    console.log('inserted')
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+    });
+
+
 
     //Delete API Call
     $(document).on("click", '.delete', function (e) {
