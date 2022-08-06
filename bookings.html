@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <h1>Flights Data</h1>
+    <h1>Flight Data</h1>
     <div id="add_data_Modal" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -24,6 +24,7 @@
                 </div>
                 <div class="modal-body">
                     <div id="insert_form">
+                        <input type="text" placeholder="Flight ID" id="flightid" required="" />
                         <input type="text" placeholder="Flight Name" id="flightname" required="" />
                         <input type="text" placeholder="departure" id="departure" required="" />
                         <input type="text" placeholder="arrival" id="arrival" required="" />
@@ -41,30 +42,43 @@
             </div>
         </div>
     </div>
+    <div id="edit_data_Modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Flight</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div id="insert_form">
+                        <input type="text" placeholder="Flight Name" id="eflightname" required="" />
+                        <input type="text" placeholder="departure" id="edeparture" required="" />
+                        <input type="text" placeholder="arrival" id="earrival" required="" />
+                        <input type="text" placeholder="ToD" id="etod" required="" />
+                        <input type="text" placeholder="RoA" id="etoa" required="" />
+                        <input type="number" placeholder="cost" id="ecost" required="" />
+                        <input type="number" placeholder="seats" id="eseats" required="" />
+                        <input type="date" placeholder="date" id="eflightdate" required="" />
 
+                        <div style="overflow:auto;">
+                            <input type="button" id="editflight" class="btn-primary" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <table>
+        <thead>
+        </thead>
+        <tbody></tbody>
+    </table><br />
     <button type="button" data-toggle="modal" data-target="#add_data_Modal" class="btn">
         Add
         Flights</button><br />
-    <table>
-        <thead>
-            <!-- <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Departure</th>
-                <th>Arrival</th>
-                <th>dep time</th>
-                <th>arr time</th>
-                <th>cost</th>
-                <th>seats</th>
-
-            </tr> -->
-        </thead>
-        <tbody></tbody>
-    </table>
-    <!-- <input type="number" id="flightid" placeholder="Enter Flight ID to be deleted" /> -->
-    <!-- <button type="button" class="delete" class="btn">Delete</button> -->
 </body>
-
 
 <script src="scripts/bookings.js"></script>
 

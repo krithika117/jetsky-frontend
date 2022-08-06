@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
 * {
-    font-family: 'Poppins', sans-serif!important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
-body{
+body {
     padding: 1rem;
 }
 
@@ -25,7 +25,6 @@ h1 {
 }
 
 button {
-
     background-color: #154E5E !important;
     padding: 10px 20px;
     color: #fff !important;
@@ -40,45 +39,49 @@ button:hover {
 }
 
 table {
-    
-    
     width: 100%;
     align-items: center;
     justify-content: center;
-    
-    height:60%;
+    height: 60%;
     overflow: scroll;
 }
 
+a {
+    text-decoration: none!important;
+    cursor: pointer;
+}
+
 tr {
-    width: 100%;
+    width: 90%;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     height: 7rem;
-    padding:2rem;
+    padding: 2rem;
     border-radius: 10px;
 
 }
 
 .modal_header {
-    height:auto;
+    height: auto;
 }
-input{
-    margin-top: 0.6rem!important;
-    margin-bottom: 0.6rem!important;
-    width:100%;
-    border:none;
-    padding:1.5rem!important;
+
+input {
+    margin-top: 0.6rem !important;
+    margin-bottom: 0.6rem !important;
+    width: 100%;
+    border: none;
+    padding: 1.5rem !important;
     border-bottom: 1px solid black;
 }
 
 @media screen and (max-width: 990px) {
     table {
-        font-size:0.7rem;
+        font-size: 0.7rem;
     }
-    tr{
-        padding:3rem;
+
+    tr {
+        padding: 3rem;
     }
-    
+
 }
